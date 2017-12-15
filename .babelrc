@@ -1,0 +1,45 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "debug": false
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-decorators-legacy"
+    // "syntax-dynamic-import"
+    // "react-hot-loader/babel"
+  ],
+  "env": {
+    // only enable it when process.env.NODE_ENV is 'development' or undefined
+    "development": {
+      "plugins": [
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                // if you use React Native, pass "react-native" instead:
+                "imports": [
+                  "react"
+                ],
+                // this is important for Webpack HMR:
+                "locals": [
+                  "module"
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}
