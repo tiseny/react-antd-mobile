@@ -12,25 +12,25 @@ $ cd react-antd-mobile
 
 **运行项目**
 
-* 1. 本地开发运行
+* 本地开发运行
 
 ```bash
 $ npm run dev
 ```
 
-* 2. 构建
+* 构建
 
 ```bash
 $ npm run build
 ```
 
-* 3. devdll 本地静态化
+* devdll 本地静态化
 
 ```bash
 $ npm run devdll
 ```
 
-* 4. proddll 发布版本静态化
+* proddll 发布版本静态化
 
 ```bash
 $ npm run proddll
