@@ -1,18 +1,20 @@
 import React from 'react'
-import { NavBar, Icon } from 'antd-mobile'
 
 class Setup extends React.PureComponent {
+
+  componentWillMount() {
+    const { onInitHeader } = this.props
+
+    onInitHeader({
+      title: '设置',
+      iconName: 'home'
+    })
+  }
+
   render() {
-    return <div>
-      <header>
-        <NavBar iconName="home" rightContent={[<Icon key="1" type="search" />]}>
-          设置
-        </NavBar>
-      </header>
-      <section>
-        我
-      </section>
-    </div>
+    return <section>
+      设置
+    </section>
   }
 }
 
