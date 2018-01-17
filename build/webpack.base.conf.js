@@ -20,7 +20,10 @@ const webpackConfig = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       'redux-actions': resolve('src/libs/redux-actions'),
-      'redux-api-middleware': resolve('src/middleware/api-middleware')
+      'redux-api-middleware': resolve('src/middleware/api-middleware'),
+      '@views': resolve('src/views'),
+      '@helpers': resolve('src/helpers'),
+      '@store': resolve('src/redux')
     }
   },
   module: {

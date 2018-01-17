@@ -1,5 +1,3 @@
-import { DEV } from '../../config'
-
 export default function getFetchOptions(endpoint, method = 'GET', opts = {}) {
 	const headers = opts.headers || {}
 	const defaultOptions = {

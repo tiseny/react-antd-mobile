@@ -16,7 +16,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     main: [
       // 'react-hot-loader/patch',
       './build/dev-client',
-      './src/app'
+      './src/main'
     ]
   },
   output: {
@@ -55,7 +55,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'ant mobile',
       template: path.resolve(__dirname, '../index.html'),
       inject: true
     }),

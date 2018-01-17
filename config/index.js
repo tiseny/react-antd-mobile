@@ -2,7 +2,7 @@ const path = require('path')
 const DEV = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  DEV,                       // 环境变量
+  env: DEV,                       // 环境变量
   baseAlias: '',             // 子目录
   apiDomain: '/api',         //请求前缀
   build: {
