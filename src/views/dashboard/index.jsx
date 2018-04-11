@@ -1,64 +1,51 @@
 import React from 'react'
-import { WhiteSpace, WingBlank, Flex, Carousel } from 'antd-mobile'
+import { WhiteSpace, List, Button } from 'antd-mobile'
 import './index.less'
 
 class Dashboard extends React.PureComponent {
-  state = {
-    current: 0
-  }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  } 
 
   componentWillMount() {
-    const { onInitHeader } = this.props
-    onInitHeader({
+    const { onInit } = this.props
+
+    onInit({
       title: '首页',
-      iconName: 'home'
+      hasHeader: false
     })
   }
 
   render() {
-    const settings = {
-      dots: true,
-      autoplay: true,
-      infinite: true,
-      selectedIndex: this.state.current,
-      beforeChange: this.beforeSlide,
-      afterChange: this.slideTo,
-    }
-
-    return <section>
-      <WhiteSpace/>
-      <WingBlank size="md">
-        <Carousel {...settings}>
-          <Flex
-            justify="center"
-            className="flex-container-justify">
-            <h3>Carousel 1</h3>
-          </Flex>
-          <Flex
-            justify="center"
-            className="flex-container-justify">
-            <h3>Carousel 2</h3>
-          </Flex>
-          <Flex
-            justify="center"
-            className="flex-container-justify">
-            <h3>Carousel 3</h3>
-          </Flex>
-        </Carousel>
-      </WingBlank>
+    
+    return <section style={this.STYLE_SHEET.page}>
+      <Button type="primary" style={{width: '90%'}} onClick={this.handleGo.bind(this, 'shop')}>样品商城</Button><WhiteSpace />
+      <Button type="primary" style={{width: '90%'}} onClick={this.handleGo.bind(this, 'info')}>个人中心</Button><WhiteSpace />
+      
     </section>
   }
 
-  beforeSlide = (from, to) => {
-    console.log(`slide from ${from} to ${to}`);
+  handleGo(type) {
+    let url = ''
+    switch(type) {
+      case 'shop' : url = '/shop'; break;
+      case 'info' : url = '/info'; break;
+    }
+    // 跳转
+    this.context.router.push(url)
   }
 
-  slideTo = (index) => {
-    this.setState({
-      current: index
-    })
-    console.log('slide to', index);
+  STYLE_SHEET = {
+    page: {
+      display: "flex",
+      flex: 1,
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center"
+    }
   }
+
 }
 
 export default Dashboard

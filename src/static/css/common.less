@@ -1,3 +1,5 @@
+@import url('iconfont.less');
+
 html,
 body {
   width: 100%;
@@ -22,10 +24,18 @@ body {
       flex-direction: column; 
 
       > .page-main{
+        display: flex;
         flex: 1;
         overflow-y: auto;
+
+        >.inner-page{
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+        }
       } 
     }
   }
 }
+
 

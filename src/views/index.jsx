@@ -4,77 +4,42 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { actions as userActionCreators } from '../redux/modules/user'
 
-import { Header, Footer } from './layout'
+import { Header } from './layout'
 
 import 'antd-mobile/dist/antd-mobile.css'
 // 引入common样式
 import '../static/css/common.less'
 
-
 class Main extends React.PureComponent {
 
   state = {
-    title: '首页',
-    iconName: 'home'
-  }
-
-  componentDidMount() {  
-    this.refs.footer.tab = this.props.location.pathname
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.refs.footer.tab = nextProps.location.pathname
+    title: '',  
+    hasHeader: true,
+    searchProps: null
   }
 
   render() {
-    const { title, iconName } = this.state
-    const result = this.checkRouter()
-    const children = this.props.children
-    const childProps = result.isChild ? {
-      onInitHeader: this.handleSetHeader.bind(this)
-    } : null
+    const { searchProps, hasHeader } = this.state
 
-    return <div className={result.isChild ? "page-wrap" : 'page-wrap full'}>
-      {result.hasHeader && <Header title={title} iconName={iconName}/>}
-      <div className="page-main">{React.cloneElement(children, childProps)}</div>
-      {result.hasFooter && <Footer ref="footer" />}
+    return <div className="page-wrap">
+      {hasHeader && <Header searchProps={searchProps} />}
+      <div className="page-main">{React.cloneElement(this.props.children, {
+        onInit: this.handleInit.bind(this)
+      })}</div>
     </div>
   }
 
   // 设置头部内容
-  handleSetHeader(header) {
-    console.log(header)
+  handleInit(config) {
     this.setState({
-      ...header
+      ...config
     })
-  }
 
-  // 检查路由
-  checkRouter() {
-    const pathname = window.location.pathname
-
-    let hasHeader = true
-    let hasFooter = true
-    let isChild = true
-
-    // 遍历 名单
-    for(let i = 0; i < this.UN_CHILD_PAGE.length; i ++) {
-      if (new RegExp(this.UN_CHILD_PAGE[i]).test(pathname)) {
-        hasHeader = false
-        hasFooter = false
-        isChild = false
-        break;
-      }
-    }
-
-    return {
-      isChild,  // 是否是子页面，
-      hasHeader,  // 是否有头部
-      hasFooter  // 是否有底部
+    // 设置头部
+    if (config.title) {
+      document.title = config.title
     }
   }
-
-  UN_CHILD_PAGE = ['^/login.*', '^/register.*']
 
 }
 

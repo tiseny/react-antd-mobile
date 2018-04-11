@@ -1,8 +1,8 @@
 module.exports = {
-  path: 'need',
+  path: 'shop',
   getComponent(location, cb) {
     require.ensure([], (require) => {
-      cb(null, require('../views/need').default)
+      cb(null, require('../views/shop').default)
     })
   }
 }

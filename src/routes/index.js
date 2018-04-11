@@ -13,11 +13,8 @@ export default {
   },
   childRoutes: [
     require('./dashboard'),
-    require('./help'),
-    require('./need'),
-    require('./setup'),
-    require('./login'),
-    require('./register'),
+    require('./shop'),
+    require('./info'),
     require('./norights'),
     require('./404')
   ]
