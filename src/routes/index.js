@@ -15,6 +15,8 @@ export default {
     require('./dashboard'),
     require('./shop'),
     require('./info'),
+    require('./payways'),
+    require('./address'),
     require('./norights'),
     require('./404')
   ]
