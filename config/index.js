@@ -33,8 +33,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        //target: 'http://dmp-admin-dev.mypaas.com.cn',
-        target: 'http://10.5.1.123:8102/api',
+        //target: '',
+        target: '/api',
         changeOrigin: true,
 
         //修改代理响应头cookie域名与开发域名一致，方便登录认证
